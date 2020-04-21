@@ -2,11 +2,11 @@ import types from '../actionTypes'
 
 export const increment = () => {
     return {
-        type: types().counter.increment
+        type: types().quantity.increment
     }
 }
 export const decrement = () => {
     return {
-        type: types().counter.decrement
+        type: types().quantity.decrement
     }
 }

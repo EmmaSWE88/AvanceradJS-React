@@ -2,10 +2,10 @@ import types from '../actionTypes'
 
 export default (state = 0, action) => {
     switch(action.type) {
-        case types().counter.increment:
+        case types().quantity.increment:
             return state + 1
 
-        case types().counter.decrement:
+        case types().quantity.decrement:
             return state - 1
 
         default:
