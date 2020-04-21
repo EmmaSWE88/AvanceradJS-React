@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
      <Counter />
-     <Quantity />
+     <Quantity /> 
     </div>
   );
 }
