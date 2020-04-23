@@ -5,6 +5,7 @@ import LandingPage from './views/LandingPage';
 import Products from './views/Products';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ProductDetails from './views/ProductDetails';
+import NotFound from './views/NotFound';
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />  
         <Route path="/products" exact component={Products} />
-        <Route path="/products/details" exact>
+        <Route path="/products/details/:id" exact>
           <ProductDetails />
         </Route>
+        <Route path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
