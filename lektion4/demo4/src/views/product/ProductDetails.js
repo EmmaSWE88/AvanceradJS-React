@@ -5,10 +5,18 @@ export default function ProductDetails() {
     const { id } = useParams()
     const [product, setProduct] = useState('')
 
-    //Version 1
-    useEffect(() => {
-        setProduct(id)
+    //Version 3 - match i ProductDetails(match) hör hit
+    useEffect(() =>{
+        // console.log('useParams: ' + id);
+        // console.log('match.params.id : ' + match.params.id);
+        // console.log(match);
+        setProduct(id)  
     }, [id])
+
+    //Version 1
+    // useEffect(() => {
+    //     setProduct(id)
+    // }, [id])
 
     // //Version 2
     // useEffect( () => {
@@ -25,6 +33,7 @@ export default function ProductDetails() {
 
     // }
 
+   
 
     return (
         <div>
