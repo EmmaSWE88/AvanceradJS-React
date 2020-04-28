@@ -1,11 +1,19 @@
 import React from 'react'
-import authService from '../../services/AuthService'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../store/actions/authenticate'
 
 export default function Admin(props) {
-    return (
+    const dispatch = useDispatch()
+
+    const _logout = () => {
+        dispatch(logout())
+        props.history.push('/')
+    }
+
+    return ( 
         <div>
             <h1>Admin Page</h1>
-            <button onClick={() => authService.logout(() => {props.history.push("/")}) }>Logout</button>
+            <button onClick={_logout}>Logout</button> 
         </div>
     )
 }

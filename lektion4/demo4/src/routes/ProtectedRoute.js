@@ -1,11 +1,13 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import authService from '../services/AuthService'
+
+import { useSelector } from 'react-redux'
 
 export default function ProtectedRoute({ component: Component, ...rest }) {
+    const isAuthenticated = useSelector(state => state.authenticate.isAuthenticated)
     return (
        <Route {...rest} render={props => {
-           if(authService.isAuthenticated()) {
+           if(isAuthenticated()) {
                return <Component {...props} />
            }
            else {
