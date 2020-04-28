@@ -59,5 +59,5 @@ else {
     </div>
   </section>
 }
-return <h1>single cocktail page id :{id} </h1>;
+//return <h1>single cocktail page id :{id} </h1>;
 }
