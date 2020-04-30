@@ -1,4 +1,7 @@
 import actiontypes from '../actiontypes'
+import jwt from 'jsonwebtoken'
+
+const secretKey = 'c32324glkdflkh990883920384fk9878hg'
 
 const initState = {
     shoppingcart: [],
@@ -36,6 +39,8 @@ export default (state = initState, action) => {
 
                     state.totalCartQuantity = getTotalQuantity(state.shoppingcart)
                     state.totalCartAmount = getTotalAmount(state.shoppingcart)
+
+                    localStorage.setItem('c32324glkdflkh990883920384fk9878hg', jwt.sign(state, secretKey))
             }
             catch{}
 
@@ -46,6 +51,8 @@ export default (state = initState, action) => {
                 state.shoppingcart = []
                 state.totalCartAmount = 0
                 state.totalCartQuantity = 0
+
+                localStorage.removeItem('c32324glkdflkh990883920384fk9878hg')
             }
             catch{}
 
@@ -53,6 +60,10 @@ export default (state = initState, action) => {
             return state
 
         default: 
+            let cart = jwt.decode(localStorage.getItem('c32324glkdflkh990883920384fk9878hg'))
+            if(cart)
+                state = cart
+
             return state
     }
 }
