@@ -14,20 +14,20 @@ export const removeFromCart = (id) => {
         id: id
     }
 }
+
 export const clearCart = () => {
     return {
         type: actiontypes().cart.clear
-       
     }
 }
 
 export const checkoutCart = (cart) => {
     return dispatch => {
-      if(cart.length > 0)
-        axios.post('http://localhost:9998/api/cart/checkout' + cart)
-        .then(res => {
-            if(res.status === 200)
-                dispatch(clearCart())
-        })
+        if(cart.length > 0)
+            axios.post('http://localhost:9999/api/cart/checkout' + cart)
+            .then(res => {
+                if(res.status === 200)
+                    dispatch(clearCart())
+            })
     }
 }
