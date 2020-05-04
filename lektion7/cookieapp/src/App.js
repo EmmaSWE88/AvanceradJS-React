@@ -26,6 +26,16 @@ function App() {
   const addToCart = () => {
     const cart = jwt.sign({ id: 1, product: 'product 1' }, secretKey)
     setCookie('shoppingcart', cart, { path: '/', maxAge: 3600 * 24 * 7 })
+    
+  }
+
+  const shoppingCart = () => {
+    const cart = jwt.decode(cookies.shoppingcart)
+
+    if(cart !== null) 
+    return JSON.stringify(cart)
+    else
+    return 'shopping cart is empty'
   }
 
   return (
@@ -35,7 +45,10 @@ function App() {
       {
         cookies.consent ? '' : <button onClick={setConsent}>Accept Cookies</button>
       }
-      <button onClick={addToCart}>Add To Cart</button>   
+      <button onClick={addToCart}>Add To Cart</button>  
+      <p className="mt-5">
+      { shoppingCart }   
+      </p> 
       
     </div>
   );
