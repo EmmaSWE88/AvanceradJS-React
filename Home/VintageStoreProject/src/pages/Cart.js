@@ -9,7 +9,7 @@ export default function Cart() {
   let user = false;
   const {cart,total} = React.useContext(CartContext)
   
-  if(cart.lenth === 0) {
+  if(cart.length === 0) {
     return <EmptyCart />;
   }
   
