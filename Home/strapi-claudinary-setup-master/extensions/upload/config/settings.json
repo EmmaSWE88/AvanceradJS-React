@@ -1,0 +1,8 @@
+{
+  "provider": "cloudinary",
+  "providerOptions": {
+    "cloud_name": "dasp8lors",
+    "api_key": "933826986434719",
+    "api_secret": "YoacRIqLAiZuylFc3cAQHPwocVA"
+  }
+}
