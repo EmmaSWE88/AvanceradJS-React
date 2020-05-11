@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>{{ title }} - {{ companyName }}</h1>
+    <div class="mt-3">
+        <ul>
+            <li *ngFor="let employee of employees">
+              {{ employee.firstName }} {{ employee.lastName }}
+            </li>
+          </ul>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
