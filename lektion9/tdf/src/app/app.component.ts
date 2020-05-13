@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegisterModel } from './models/register-model';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,9 @@ export class AppComponent {
   ]
 
   options = ['Gaming','Coding','Sports','Eating','Sleeping']
+
+  preferredLanguage = ['Angular', 'Asp.Net Core','PHP', 'React', 'VUE']
+
+  user = new RegisterModel()
+
 }
