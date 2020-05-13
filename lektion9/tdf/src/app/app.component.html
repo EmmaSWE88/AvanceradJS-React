@@ -1,13 +1,16 @@
 <div class="container my-5">
-  <form #registerForm="ngForm">
+  <button (click)="changeLanguage('en')">EN</button>
+  <button (click)="changeLanguage('sv')">SV</button>
+
+  <form (ngSubmit)="onSubmit()">
 
   <div class="form-group">
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="firstName" class="form-control" autocomplete="off" [(ngModel)]="user.FirstName">
+    <label for="firstName">{{ placeholders.firstName}}</label>
+    <input type="text" id="firstName" name="firstName" class="form-control" autocomplete="off" [(ngModel)]="user.FirstName" placeholder="{{ placeholders.firstName}}">
   </div>
   <div class="form-group">
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lastName" class="form-control" autocomplete="off" [(ngModel)]="user.LastName">
+    <label for="lastName">{{placeholders.lastName}}</label>
+    <input type="text" id="lastName" name="lastName" class="form-control" autocomplete="off" [(ngModel)]="user.LastName" placeholder="{{ placeholders.lastName}}">
   </div>
   <div class="form-group">
     <label for="email">Email</label>
@@ -18,18 +21,18 @@
     <input type="password" id="password" name="password" class="form-control" autocomplete="off" [(ngModel)]="user.Password">
   </div>
   
-  <div ngModelGroup="address">
+  <div>
     <div class="form-group">
       <label for="addressLine">Address</label>
-      <input type="text" id="addressLine" name="addressLine" class="form-control" autocomplete="off" [(ngModel)]="user.Address.AddressLine">
+      <input type="text" id="addressLine" name="addressLine" class="form-control" autocomplete="off" [(ngModel)]="user.AddressLine">
     </div>
     <div class="form-group">
       <label for="postalCode">Postal Code</label>
-      <input type="text" id="postalCode" name="postalCode" class="form-control" autocomplete="off" [(ngModel)]="user.Address.PostalCode">
+      <input type="text" id="postalCode" name="postalCode" class="form-control" autocomplete="off" [(ngModel)]="user.PostalCode">
     </div>
     <div class="form-group">
       <label for="city">City</label>
-      <input type="text" id="city" name="city" class="form-control" autocomplete="off" [(ngModel)]="user.Address.City">
+      <input type="text" id="city" name="city" class="form-control" autocomplete="off" [(ngModel)]="user.City">
     </div>
   </div>
   
@@ -44,21 +47,23 @@
   </div>
   <div class="form-group"> 
     <p>Language:</p>
-    <div class="form-check" *ngFor="let language of preferredLanguage">
-      <input type="radio" [id]="language" name="preferredLanguage" [value]="language" class="form-check-input" [(ngModel)]="user.PreferredLanguage">
+    <div class="form-check" *ngFor="let language of preferredLanguages">
+      <input type="radio" [id]="language" name="preferredLanguage" [value]="language" class="form-check-input" [(ngModel)]="user.PreferredLanguages">
       <label [for]="language">{{ language }}</label>
     </div>
   </div>
-
+  
   <div class="form-check">
-    <input type="checkbox" id="accepted" class="form-check-input" [(ngModel)]="user.Accepted">
-    <label for="accepted">I Accept the userterms and agreements.</label>
+    <input type="checkbox" id="accepted" name="accepted" class="form-check-input" [(ngModel)]="user.Accepted">
+    <label for="accepted">I accept the userterms and agreements</label>
   </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
   </form>
 
   <hr class="my-3">
 
-  <p><strong>REGISTER FORM:</strong>{{ registerForm.value | json  }}</p>
+  <!-- <p><strong>REGISTER FORM:</strong>{{ registerForm.value | json  }}</p> -->
   <p><strong>USER:</strong>{{ user | json  }}</p>
 
 </div>
