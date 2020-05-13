@@ -1,0 +1,28 @@
+<div class="constainer my-5">
+  <form #registerForm="ngForm">
+
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" class="form-control" autocomplete="off" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" class="form-control" autocomplete="off" ngModel>
+  </div> 
+  <div class="form-group">
+    <label for="hobbies">Hobbies</label>
+    <select name="hobbies" id="hobbies" class="custom-select" ngModel>
+      <option value="" disabled selected>Select...</option>
+      <!-- <option value="" *ngFor="let option of options">{{ option }}</option> -->
+      <option value="" *ngFor="let option of optionsWithValues" [value]="option.value">{{ option.text }}</option>
+    </select>
+  </div>
+
+  </form>
+
+  <p>
+    {{ registerForm.value | json  }}
+  </p>
+
+</div>
+   
