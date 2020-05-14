@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormArray } from '@angular/forms'
+import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms'
 import { UserService } from './services/user.service'
 
 @Component({
@@ -9,24 +9,30 @@ import { UserService } from './services/user.service'
 })
 export class AppComponent {
 
+   public regForm: FormGroup
+
   constructor(private formBuilder:FormBuilder, private userService:UserService) {}
 
-  regForm = this.formBuilder.group({
-    
-    programmingSkills: this.formBuilder.array([]),
-    
-    firstName: [''],
-    lastName: [''],
-
-    address: this.formBuilder.group({
-      addressline: [''],
-      postalCode: [''],
-      city: ['']
+  ngOnInit(){
+    this.regForm = this.formBuilder.group({
+      
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      addressline: ['', Validators.required],
+      postalCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      city: ['', Validators.required],
+      programmingSkills: this.formBuilder.array([]),
+      acceptTerms: [false, Validators.requiredTrue]
     })
-  })
+  }
+  
 
   addProgrammingSkill() {
     this.programmingSkills.push(this.formBuilder.control(''))
+  }
+
+  removeProgrammingSkill(index) {
+    this.programmingSkills.removeAt(index)
   }
 
   get programmingSkills() {
@@ -35,7 +41,7 @@ export class AppComponent {
 
   onSubmit() {
     this.userService.register(this.regForm.value)
-    .subscribe(res => console.log('successful: ' + res), error => console.log('failed: ' + error.message))  
+    .subscribe(res => console.log('submitted and successful: ' + res), error => console.log('submitted but failed: ' + error.message))  
   }
 
 }
