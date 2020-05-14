@@ -1,0 +1,30 @@
+<div class="container my-5">
+  {{ regForm.value | json }}
+  <hr class="my-5" />
+  <form [formGroup]="regForm">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control" autocomplete="off">
+  </div>
+
+  <div formGroupName="address">
+    <div class="form-group">
+      <label for="addressline">Addressline</label>
+        <input type="text" id="addressline" formControlName="addressline" class="form-control" autocomplete="off">
+  </div>
+  <div class="form-group">
+    <label for="postalCode">Postal Code</label>
+      <input type="text" id="postalCode" formControlName="postalCode" class="form-control" autocomplete="off">
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+      <input type="text" id="city" formControlName="city" class="form-control" autocomplete="off">
+  </div>
+  </div>
+  <button type="submit" class="btn btn-default">Complete Registration</button>
+  </form>
+</div>
