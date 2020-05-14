@@ -1,7 +1,8 @@
 <div class="container my-5">
   {{ regForm.value | json }}
   <hr class="my-5" />
-  <form [formGroup]="regForm">
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" id="firstName" formControlName="firstName" class="form-control" autocomplete="off">
@@ -25,6 +26,18 @@
       <input type="text" id="city" formControlName="city" class="form-control" autocomplete="off">
   </div>
   </div>
-  <button type="submit" class="btn btn-default">Complete Registration</button>
+  <hr class="my-4" />
+  
+  <div class="form-group">
+    <button type="button" class="btn btn-secondary" (click)="addProgrammingSkill()">Add Programming Skills</button>
+</div>
+<div class="form-group" formArrayName="programmingSkills" *ngFor="let skill of programmingSkills.controls; let i=index">
+    <div class="form-group">
+        <label [for]="i">Skill {{ i + 1 }}</label>
+        <input type="text" [id]="i" [formControlName]="i" class="form-control" autocomplete="off">
+    </div>            
+</div>
+<hr class="my-3" />
+  <button [disabled]='!regForm.valid' type="submit" class="btn btn-default">Complete Registration</button>
   </form>
 </div>
