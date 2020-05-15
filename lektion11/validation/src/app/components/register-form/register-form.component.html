@@ -1,0 +1,62 @@
+<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    {{ regForm.value | json }}
+    <div class="z-depth-1 p-5">
+        <h3 class="mb-4 text-center">Register New User</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input [class.is-invalid]="regForm.controls.firstName.invalid && (regForm.controls.firstName.touched || regForm.controls.firstName.dirty)" type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group col-md-6"> 
+                <input [class.is-invalid]="regForm.controls.lastName.invalid && (regForm.controls.lastName.touched || regForm.controls.lastName.dirty)" type="text" class="form-control" formControlName="lastName" placeHolder="Last Name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input [class.is-invalid]="regForm.controls.email.invalid && (regForm.controls.email.touched || regForm.controls.email.dirty)" type="text" class="form-control" formControlName="email" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input [class.is-invalid]="regForm.controls.password.invalid && (regForm.controls.password.touched || regForm.controls.password.dirty)" type="password" class="form-control" formControlName="password" placeholder="Password">
+                <small class="form-text text-muted pl-2">Must contain at least 8 characters.</small>
+                <small *ngIf="regForm.controls.password.errors?.forbiddenPassword" class="form-text text-danger pl-2"> '{{ regForm.controls.password.errors?.forbiddenPassword.value }}' is not allowed</small>
+                
+            </div>
+            <div class="form-group col-md-6">
+                <input [class.is-invalid]="regForm.errors?.misMatch" type="password" class="form-control" formControlName="confirmPassword" placeHolder="Confirm Password">
+                <small *ngIf="regForm.errors?.misMatch" class="form-text text-danger text-muted pl-2">Passwords don't match.</small>
+            </div>
+        </div>
+        <div class="form-row mt-4">
+            <div class="form-group col-md-12">
+                <input type="text" class="form-control" formControlName="addressline" placeholder="Addressline">
+            </div>
+
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" [class.is-invalid]="regForm.controls.zipCode.invalid && (regForm.controls.zipCode.touched || regForm.controls.zipCode.dirty)" formControlName="zipCode" placeholder="Zip Code" maxlength="5">
+                <small *ngIf="regForm.controls.zipCode.invalid && (regForm.controls.zipCode.touched || regForm.controls.zipCode.dirty)" class="form-text text-danger text-muted pl-2">Must contain 5 digits.</small>
+            </div>
+            <div class="form-group col-md-8">
+                <input type="text" class="form-control" formControlName="city" placeHolder="City">
+            </div>
+        </div>
+        <div class="form-row mt-4">
+            <div class="form-group col-md-6">
+                <select class="custom-select" [class.is-invalid]="regForm.controls.role.invalid && (regForm.controls.role.touched || regForm.controls.role.dirty)" formControlName="role">
+                    <option value="" disabled>Select user role...</option>
+                    <option *ngFor="let role of userRoles" [value]="role">{{ role }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group col-md-12 form-check">
+            <input [class.is-invalid]="regForm.controls.acceptTerms.invalid && (regForm.controls.acceptTerms.touched || regForm.controls.acceptTerms.dirty)" id="acceptTerms" type="checkbox" class="form-check-input cursor" formControlName="acceptTerms">
+            <label for="acceptTerms" class="form-check-label cursor">I have read and accepted the User Terms and Conditions.</label>
+        </div>
+
+        <button [disabled]="!regForm.valid" [class.btn-light]="!regForm.valid" type="submit" class="btn btn-success btn-lg btn-block mt-5">Complete Registration</button>
+    </div>
+
+
+    <button type="reset" class="btn btn-link btn-block text-muted mt-2">Click here to clear the registration form</button>
+
+</form>
