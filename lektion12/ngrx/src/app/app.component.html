@@ -1,6 +1,15 @@
 <div class="container mt-4">
 
+    <form (ngSubmit)="AddCartItem()">
+        <input type="text" name="productName" placeholder="Product Name" [(ngModel)]="product.name">
+        <button type="submit">Add Product</button>
+    </form>
 
+<ul>
+    <li *ngFor="let item of cart$ | async">
+         {{ item.name }} <button (click)="RemoveCartItem(item.id)" class="btn btn-danger btn-sm">REMOVE</button>
+    </li>
+</ul>
 
 
 
