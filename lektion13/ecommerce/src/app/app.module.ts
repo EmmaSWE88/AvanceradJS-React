@@ -12,6 +12,7 @@ import { ProductViewComponent } from './views/product-view/product-view.componen
 import { ProductGridComponent } from './components/product-grid/product-grid.component';
 import { ProductCatalogReducer } from './store/reducers/product-catalog.reducer';
 import { ProductReducer } from './store/reducers/product.reducer';
+import { ShoppingCartReducer } from './store/reducers/shoppingcart.reducer';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductReducer } from './store/reducers/product.reducer';
     HttpClientModule,
     StoreModule.forRoot({
       productcatalog: ProductCatalogReducer,
-      product: ProductReducer
+      product: ProductReducer,
+      shoppingcart: ShoppingCartReducer
     }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
