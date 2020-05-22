@@ -1,9 +1,10 @@
 //Här görs API hämtningar och vi har våra actions för vår store här
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient} from '@angular/common/http'
 import { Store } from '@ngrx/store';
 import * as demo from '../data/demo'
+import * as ProductCatalogActions from '../store/actions/product-catalog.actions'
 
 @Injectable({
   providedIn: 'root'

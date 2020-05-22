@@ -1,4 +1,7 @@
+//Här hanterar jag produkt-grejerna, här vill jag göra saker med produkterna
+
 import { Component, OnInit } from '@angular/core';
+import { ProductCatalogService } from 'src/app/services/product-catalog.service';
 
 @Component({
   selector: 'app-product-catalog-view',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCatalogViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productCatalogService: ProductCatalogService) { }
 
   ngOnInit(): void {
+    this.productCatalogService.clear()
+    this.productCatalogService.get()
   }
 
 }

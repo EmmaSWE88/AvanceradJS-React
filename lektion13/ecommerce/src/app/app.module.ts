@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http'
 import { ProductCatalogViewComponent } from './views/product-catalog-view/product-catalog-view.component';
 import { ProductViewComponent } from './views/product-view/product-view.component';
 import { ProductGridComponent } from './components/product-grid/product-grid.component';
+import { ProductCatalogReducer } from './store/reducers/product-catalog.reducer';
+import { ProductReducer } from './store/reducers/product.reducer';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,11 @@ import { ProductGridComponent } from './components/product-grid/product-grid.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    HttpClientModule,
+    StoreModule.forRoot({
+      productcatalog: ProductCatalogReducer,
+      product: ProductReducer
+    }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
