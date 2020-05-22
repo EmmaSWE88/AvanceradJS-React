@@ -1,0 +1,5 @@
+<div *ngFor="let product of productcatalog | async">
+    <a [routerLink]="'/products/' + product.id">{{ product.name }}</a>
+    <button class="btn btn-success btn-sm" (click)="addToCart(product, 1)">Add to cart</button>
+
+</div>
