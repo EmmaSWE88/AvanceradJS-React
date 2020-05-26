@@ -1,0 +1,15 @@
+export enum ActionTypes {
+
+    PRODUCTCATALOG_LOAD                 = '[PRODUCTCATALOG] PRODUCTCATALOG_LOAD',
+    PRODUCTCATALOG_LOAD_SUCCESS         =  '[PRODUCTCATALOG] PRODUCTCATALOG_LOAD_SUCCESS',
+    PRODUCTCATALOG_LOAD_FAILURE         =  '[PRODUCTCATALOG] PRODUCTCATALOG_LOAD_FAILURE',
+
+    CART_ADD                            =  '[CART] CART_ADD',
+    CART_ADD_SUCCESS                    =  '[CART] CART_ADD',
+    CART_ADD_FAILURE                    =  '[CART] CART_ADD_FAILURE',
+
+    CART_REMOVE                         =  '[CART] CART_REMOVE',
+    CART_REMOVE_SUCCESS                 =  '[CART] CART_REMOVE_SUCCESS',
+    CART_REMOVE_FAILURE                 =  '[CART] CART_REMOVE_FAILURE',
+
+}
