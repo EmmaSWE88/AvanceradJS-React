@@ -1,6 +1,7 @@
 import { ProductCatalogState } from './productcatalog-state.model';
+import { CartState } from './cart-state.model';
 
 export interface AppState {
-    //hur ser storen ut?
-    readonly productcatalog: ProductCatalogState
+    readonly productcatalog: ProductCatalogState,
+    readonly cart: CartState
 }

@@ -4,6 +4,7 @@ import { AppState } from './store/models/app-state.model';
 import { Observable } from 'rxjs';
 import { ProductItem } from './store/models/product-item.model';
 import * as PCA from './store/actions/productcatalog.actions'
+import * as CA from './store/actions/cart.actions'
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,11 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new PCA.ProductCatalogLoad())
   }
 
-  addItem(id: string) {}
+  addItem(id: string) {
+    this.store.dispatch(new CA.CartAdd(id))
+  }
+  removeItem(id: string) {
+    this.store.dispatch(new CA.CartRemove(id))
+  }
 
 }
